@@ -37,7 +37,7 @@ const CryptoScreen = () => {
                             </div>
                         ))}
                         <button className="btn btn-light btn-block my-5 others-btn">
-                            <a href="https://ig.me/m/cex.ng">Others</a>
+                            <a href="https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20buy%20crypto">Others</a>
                         </button>
                     </div>
                 </div>
@@ -50,17 +50,17 @@ const CryptoScreen = () => {
         return (
             <div>
                 {/* Design for Sell */}
-                <div className="text-black">
+                <div>
                     <h1 className="text-center pt-3">Sell Crypto</h1>
                     <div className="row coins m-5">
                             {cryptoOptions.map((crypto) => (
-                                <div key={crypto.symbol} className="col-lg-3 col-md-3 col-sm-4 col-6 menu-item text-center py-3" onClick={() => handleCryptoSelect(crypto.symbol)}>
+                                <div key={crypto.symbol} className="col-lg-3 col-md-3 col-sm-4 col-6 menu-item text-center py-3" onClick={() => handleCryptoSelect(crypto.sym)}>
                                     <img src={`./img/${crypto.symbol.toLowerCase()}.png`} alt={crypto.name} height="130px" />
                                     <p className="h6 p-3">{crypto.name}</p>
                                 </div>
                             ))}
-                            <button className="btn btn-dark btn-block my-5 others-btn">
-                                <a href="https://ig.me/m/cex.ng" className="text-white">Others</a>
+                            <button className="btn btn-outline-dark btn-block my-5 others-btn">
+                                <a href="https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20sell%20crypto">Others</a>
                             </button>
                     </div>
                 </div>
