@@ -5,7 +5,7 @@ import CryptoScreen from "./components/CryptoScreen";
 import PaymentDetails from "./components/PaymentDetails";
 import NairaDetails from "./components/NairaDetails";
 import CryptoDetails from "./components/CryptoDetails";
-
+import Order from "./components/Order";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
           <Route path="/payment-details/:crypto" element={<PaymentDetails />} />
           <Route path="/naira-details/" element={<NairaDetails />} />
           <Route path="/crypto-details/" element={<CryptoDetails />} />
+          <Route path="/order/:orderNumber" element={<Order />} />
         </Routes>
     </div>
     </Router>
