@@ -2,14 +2,15 @@ import React, {useState, useEffect} from "react";
 import {  useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+require('dotenv/config')
 
 const PaymentDetails = () => {
     //params for fetching crypto price
     const { crypto } = useParams();
     const [cryptoPrice, setCryptoPrice] = useState(null);
 
-    const nairaRate = 988.9;
-    const serviceCharge = 0.05;
+    const nairaRate = process.env.nairaRate
+    const serviceCharge = process.env.serviceCharge
 
     // get selectedValue from prev page
     const routeLocation = useLocation();
