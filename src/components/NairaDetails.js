@@ -12,13 +12,11 @@ const NairaDetails = () => {
     var { inputValuec } = location.state;
 
     const handleBackClick = () => {
-        // Navigate back to the previous page (CryptoScreen)
         navigate(-1);
     };
 
     const handlePaymentCompleted = () => {
         const orderNumber = generateOrderNumber();
-        console.log(orderNumber)
         navigate(`/order/${orderNumber}`);
     };
 

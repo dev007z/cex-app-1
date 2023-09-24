@@ -6,6 +6,7 @@ import PaymentDetails from "./components/PaymentDetails";
 import NairaDetails from "./components/NairaDetails";
 import CryptoDetails from "./components/CryptoDetails";
 import Order from "./components/Order";
+import AdminDashboard from "./components/AdminDashboard";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/naira-details/" element={<NairaDetails />} />
           <Route path="/crypto-details/" element={<CryptoDetails />} />
           <Route path="/order/:orderNumber" element={<Order />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
     </div>
     </Router>

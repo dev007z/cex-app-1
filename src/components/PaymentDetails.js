@@ -8,6 +8,9 @@ const PaymentDetails = () => {
     const { crypto } = useParams();
     const [cryptoPrice, setCryptoPrice] = useState(null);
 
+    const nairaRate = 988.9;
+    const serviceCharge = 0.05;
+
     // get selectedValue from prev page
     const routeLocation = useLocation();
     const { selectedValue } = routeLocation.state;
@@ -40,8 +43,6 @@ const PaymentDetails = () => {
         navigate(-1);
     };
 
-    const nairaRate = 846;
-    const serviceCharge = 0.05;
     const nairaValue = (cryptoPrice * nairaRate); //naira value of the crypto
     const formattedNairaValue = nairaValue !== null ? nairaValue.toLocaleString() : "Loading price..."; //formatted
 
