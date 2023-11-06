@@ -12,7 +12,7 @@ const Order = () => {
     }
     const placeOrder = async (orderData) => {
         try {
-            const response = await fetch('http://localhost:4500/placeOrder/', {
+            const response = await fetch('http://localhost:4500/placeOrder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
