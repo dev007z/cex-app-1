@@ -137,10 +137,10 @@ const NairaDetails = () => {
                 <div className="px-5">
                     <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button onClick={handlePaymentCompleted} class="nav-link active text-purple" id="kuda-tab" data-bs-toggle="tab" data-bs-target="#kuda-tab-pane" type="button" role="tab" aria-controls="kuda-tab-pane" aria-selected="true">Kuda Bank</button>
+                            <button class="nav-link active text-purple" id="kuda-tab" data-bs-toggle="tab" data-bs-target="#kuda-tab-pane" type="button" role="tab" aria-controls="kuda-tab-pane" aria-selected="true">Kuda Bank</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button onClick={handlePaymentCompleted} class="nav-link text-danger" id="zenith-tab" data-bs-toggle="tab" data-bs-target="#zenith-tab-pane" type="button" role="tab" aria-controls="zenith-tab-pane" aria-selected="false">Zenith Bank</button>
+                            <button class="nav-link text-danger" id="zenith-tab" data-bs-toggle="tab" data-bs-target="#zenith-tab-pane" type="button" role="tab" aria-controls="zenith-tab-pane" aria-selected="false">Zenith Bank</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link text-orange" id="access-tab" data-bs-toggle="tab" data-bs-target="#access-tab-pane" type="button" role="tab" aria-controls="access-tab-pane" aria-selected="false">Access Bank</button>
@@ -158,7 +158,7 @@ const NairaDetails = () => {
                                 <label className="small">Account Name</label><br/>
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
                                 <div className="d-grid">
-                                    <button className="btn btn-outline-purple mt-3 btn-block">Payment Completed</button>
+                                    <button className="btn btn-outline-purple mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
                                 </div>
                             </div>
 
@@ -172,7 +172,7 @@ const NairaDetails = () => {
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
 
                                 <div className="d-grid">
-                                    <button className="btn btn-outline-danger mt-3 btn-block">Payment Completed</button>
+                                    <button className="btn btn-outline-danger mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +185,7 @@ const NairaDetails = () => {
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
 
                                 <div className="d-grid">
-                                    <button className="btn btn-outline-orange mt-3 btn-block">Payment Completed</button>
+                                    <button className="btn btn-outline-orange mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +198,7 @@ const NairaDetails = () => {
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
 
                                 <div className="d-grid">
-                                    <button className="btn btn-outline-dark-purple mt-3 btn-block">Payment Completed</button>
+                                    <button className="btn btn-outline-dark-purple mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
                                 </div>
                             </div>
                         </div>
