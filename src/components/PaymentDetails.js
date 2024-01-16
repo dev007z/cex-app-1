@@ -39,6 +39,7 @@ const PaymentDetails = () => {
             clearInterval(interval); // Cleanup interval on unmount
         };
     });
+    
     const handleBackClick = () => {
         // Navigate back to the previous page (CryptoScreen)
         navigate(-1);
@@ -50,7 +51,7 @@ const PaymentDetails = () => {
     //BUY PAGE (CRYPTO TAB)
     // State to track the input value
     const [inputValue, setInputValue] = useState("");
-    const formattedCryptoPrice = cryptoPrice !== null ? cryptoPrice.toLocaleString() : "Loading price...";
+    const formattedCryptoPrice = cryptoPrice !== null ? cryptoPrice.toLocaleString() : "Loading price..."; 
     const totalN = nairaValue !== null ? (serviceCharge * nairaValue) + nairaValue : null;
     const formattedTotalN = totalN !== null ? totalN.toLocaleString() : "Loading total...";
     // Calculate the result of formattedTotalN divided by the input value
@@ -59,10 +60,10 @@ const PaymentDetails = () => {
     // BUY PAGE (NAIRA TAB)
     // State to track the input value
     var [inputValuec, setInputValuec] = useState("");
-    const totalC = inputValuec !== null ? inputValuec - (serviceCharge * inputValuec) : null;
+    const totalC = inputValuec !== null ? (0.95 * inputValuec) : null;
     // Calculate the result of formattedTotalN divided by the input value
     //const resultc = formattedTotalC !== null && inputValuec !== "" ? (formattedTotalC.replace(/,/g, "") / nairaValue).toLocaleString() : "-";
-    const resultcr = (totalC / nairaValue).toFixed(5);
+    const resultcr = (totalC / nairaValue).toFixed(4);
     var resultc = parseFloat(resultcr);
     inputValuec = inputValuec.toLocaleString();
     resultc = resultc.toLocaleString();
@@ -298,7 +299,7 @@ const PaymentDetails = () => {
                                             value={s_inputValuec}
                                             onChange={s_handleInputChangec} step="any"></input>
                                         <div class="py-3 d-block">
-                                            <small >Amount to pay(inclusive of charges): {crypto} {resultc}</small>
+                                            <small >Amount to pay(inclusive of charges): {crypto} {resultn}</small>
                                             {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
                                             <div class="d-grid gap-2">
                                                 <button className="btn btn-outline-dark mt-3 d-inline-block" onClick={s_handleProceedClickc}>Proceed</button>
