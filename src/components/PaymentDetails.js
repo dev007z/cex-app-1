@@ -8,8 +8,9 @@ const PaymentDetails = () => {
     //params for fetching crypto price
     const { crypto } = useParams();
     const [cryptoPrice, setCryptoPrice] = useState(null);
+    const [nairaRatez, setNairaRatez] = useState(null);
 
-    const nairaRate = env('nairaRate')
+    const nairaRate = nairaRatez
     const serviceCharge = env('serviceCharge')
 
     // get selectedValue from prev page
@@ -27,13 +28,35 @@ const PaymentDetails = () => {
             console.error("Error fetching crypto price:", error);
         }
     };
-
     useEffect(() => {
         fetchCryptoPrice();
         // Fetch price every 5 seconds
         const interval = setInterval(() => {
             fetchCryptoPrice();
-        }, 10000);
+        }, 30000); //60k ms = 1m, 30k = 30s
+
+        return () => {
+            clearInterval(interval); // Cleanup interval on unmount
+        };
+    });
+
+    // FETCH NAIRA RATE FROM BINANCE
+    const fetchNairaRate = async () => {
+        try {
+            const response = await axios.get(`https://api.binance.com/api/v3/ticker/price?symbol=USDTNGN`);
+            const price = parseFloat(response.data.price);
+            setNairaRatez(price);
+
+        } catch (error) {
+            console.error("Error fetching crypto price:", error);
+        }
+    };
+    useEffect(() => {
+        fetchNairaRate();
+        // Fetch price every 5 seconds
+        const interval = setInterval(() => {
+            fetchNairaRate();
+        }, 30000); //60k ms = 1m, 30k = 30s
 
         return () => {
             clearInterval(interval); // Cleanup interval on unmount
@@ -44,7 +67,7 @@ const PaymentDetails = () => {
         // Navigate back to the previous page (CryptoScreen)
         navigate(-1);
     };
-
+    
     const nairaValue = (cryptoPrice * nairaRate); //naira value of the crypto
     const formattedNairaValue = nairaValue !== null ? nairaValue.toLocaleString() : "Loading price..."; //formatted
 
