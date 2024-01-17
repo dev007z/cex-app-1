@@ -171,7 +171,9 @@ const PaymentDetails = () => {
                 {cryptoPrice !== null ? (
                     <div>
                         <div className="px-4">
-                            <p className="text-center">1 {crypto}: ${formattedCryptoPrice} - ₦{formattedNairaValue}</p>
+                            {/* <p className="text-center">1 {crypto}: ${formattedCryptoPrice} - ₦{formattedNairaValue}</p> */}
+                            {console.log(formattedNairaValue)}
+                            <p className="text-center">{crypto}: ${formattedCryptoPrice}</p>
                         </div>
                         <div className="p-5 text-white">
                             <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
@@ -276,7 +278,8 @@ const PaymentDetails = () => {
                 {cryptoPrice !== null ? (
                     <div>
                         <div className="px-4">
-                            <p className="text-center">1 {crypto}: ${formattedCryptoPrice} - ₦{formattedNairaValue}</p>
+                            {/* <p className="text-center">1 {crypto}: ${formattedCryptoPrice} - ₦{formattedNairaValue}</p> */}
+                            <p className="text-center">{crypto}: ${formattedCryptoPrice}</p>
                         </div>
                         <div className="p-5 ">
                             <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
