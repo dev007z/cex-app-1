@@ -13,6 +13,9 @@ const PaymentDetails = () => {
     const nairaRate = nairaRatez
     const serviceCharge = env('serviceCharge')
 
+    console.log("Naira Rate: "+nairaRate)
+    console.log("Service charge: "+serviceCharge)
+
     // get selectedValue from prev page
     const routeLocation = useLocation();
     const { selectedValue } = routeLocation.state;
@@ -83,7 +86,7 @@ const PaymentDetails = () => {
     // BUY PAGE (NAIRA TAB)
     // State to track the input value
     var [inputValuec, setInputValuec] = useState("");
-    const totalC = inputValuec !== null ? (0.95 * inputValuec) : null;
+    const totalC = inputValuec !== null ? ((1 - serviceCharge) * inputValuec) : null;
     // Calculate the result of formattedTotalN divided by the input value
     //const resultc = formattedTotalC !== null && inputValuec !== "" ? (formattedTotalC.replace(/,/g, "") / nairaValue).toLocaleString() : "-";
     const resultcr = (totalC / nairaValue).toFixed(4);
@@ -92,13 +95,13 @@ const PaymentDetails = () => {
     resultc = resultc.toLocaleString();
 
     // CODE FOR SELL (CRYPTO TAB)
-    const s_total = nairaValue !== null ? nairaValue - (serviceCharge * nairaValue) : null;
+    const s_total = nairaValue !== null ? ((1 - serviceCharge) * nairaValue) : null;
     const s_formattedTotal = s_total !== null ? s_total.toLocaleString() : "Loading total...";
-    console.log(s_formattedTotal)
+    console.log(nairaValue)
     // State to track the input value
     const [s_inputValue, s_setInputValue] = useState("");
     const s_result = formattedTotalN !== null && s_inputValue !== "" ? (s_formattedTotal.replace(/,/g, "") * s_inputValue).toLocaleString() : "-";
-    console.log(s_result)
+    
 
     // SELL PAGE (NAIRA TAB)
     // State to track the input value
@@ -172,7 +175,7 @@ const PaymentDetails = () => {
                     <div>
                         <div className="px-4">
                             {/* <p className="text-center">1 {crypto}: ${formattedCryptoPrice} - ₦{formattedNairaValue}</p> */}
-                            {console.log(formattedNairaValue)}
+                            
                             <p className="text-center">{crypto}: ${formattedCryptoPrice}</p>
                         </div>
                         <div className="p-5 text-white">
