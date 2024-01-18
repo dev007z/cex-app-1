@@ -51,7 +51,7 @@ const PaymentDetails = () => {
             setNairaRatez(price);
 
         } catch (error) {
-            console.error("Error fetching crypto price:", error);
+            console.error("Error fetching naira rate:", error);
         }
     };
     useEffect(() => {

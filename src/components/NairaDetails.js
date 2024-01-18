@@ -140,9 +140,6 @@ const NairaDetails = () => {
                             <button class="nav-link active text-purple" id="kuda-tab" data-bs-toggle="tab" data-bs-target="#kuda-tab-pane" type="button" role="tab" aria-controls="kuda-tab-pane" aria-selected="true">Kuda Bank</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link text-danger" id="zenith-tab" data-bs-toggle="tab" data-bs-target="#zenith-tab-pane" type="button" role="tab" aria-controls="zenith-tab-pane" aria-selected="false">Zenith Bank</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
                             <button class="nav-link text-orange" id="access-tab" data-bs-toggle="tab" data-bs-target="#access-tab-pane" type="button" role="tab" aria-controls="access-tab-pane" aria-selected="false">Access Bank</button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -150,6 +147,7 @@ const NairaDetails = () => {
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                        {/* KUDA BANK */}
                         <div class="tab-pane fade show active" id="kuda-tab-pane" role="tabpanel" aria-labelledby="kuda-tab" tabIndex="0">
                             <div class="py-4">
                                 <label className="small">Account Number</label><br/>
@@ -161,21 +159,8 @@ const NairaDetails = () => {
                                     <button className="btn btn-outline-purple mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="tab-pane fade" id="zenith-tab-pane" role="tabpanel" aria-labelledby="zenith-tab" tabindex="0">
-                            <div class="py-4">
-                                <label className="small">Account Number</label><br />
-                                <div onClick={copyToClipBoard2}><span className="fs-2" id="trfAcct1">2260173542</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-danger"></i></small><br /></div>
-
-                                <label className="small">Account Name</label><br />
-                                <span className="fs-2">Junaid Bashir Mijinyawa</span>
-
-                                <div className="d-grid">
-                                    <button className="btn btn-outline-danger mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
-                                </div>
-                            </div>
-                        </div>
+                        {/* ACCESS BANK */}
                         <div class="tab-pane fade" id="access-tab-pane" role="tabpanel" aria-labelledby="access-tab" tabindex="0">
                             <div class="py-4">
                                 <label className="small">Account Number</label><br />
@@ -189,6 +174,7 @@ const NairaDetails = () => {
                                 </div>
                             </div>
                         </div>
+                        {/* WEMA BANK */}
                         <div class="tab-pane fade" id="wema-tab-pane" role="tabpanel" aria-labelledby="wema-tab" tabindex="0">
                             <div class="py-4">
                                 <label className="small">Account Number</label><br />
