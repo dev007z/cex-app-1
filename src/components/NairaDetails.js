@@ -68,7 +68,7 @@ const NairaDetails = () => {
     }
     const copyToClipBoard2 = () => {
         // Get the text field
-        var result = document.getElementById("trfAcct1").innerText;
+        var result = document.getElementById("trfAcct2").innerText;
         // Create a temporary text area element
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = result; // Replace with the value you want to copy
@@ -83,7 +83,7 @@ const NairaDetails = () => {
     }
     const copyToClipBoard3 = () => {
         // Get the text field
-        var result = document.getElementById("trfAcct2").innerText;
+        var result = document.getElementById("trfAcct3").innerText;
         // Create a temporary text area element
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = result; // Replace with the value you want to copy
@@ -164,7 +164,7 @@ const NairaDetails = () => {
                         <div class="tab-pane fade" id="access-tab-pane" role="tabpanel" aria-labelledby="access-tab" tabindex="0">
                             <div class="py-4">
                                 <label className="small">Account Number</label><br />
-                                <div onClick={copyToClipBoard3}><span className="fs-2" id="trfAcct2">1513622264</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-orange"></i></small><br /></div>
+                                <div onClick={copyToClipBoard2}><span className="fs-2" id="trfAcct2">1513622264</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-orange"></i></small><br /></div>
 
                                 <label className="small">Account Name</label><br />
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
@@ -178,7 +178,7 @@ const NairaDetails = () => {
                         <div class="tab-pane fade" id="wema-tab-pane" role="tabpanel" aria-labelledby="wema-tab" tabindex="0">
                             <div class="py-4">
                                 <label className="small">Account Number</label><br />
-                                <div onClick={copyToClipBoard3}><span className="fs-2" id="trfAcct2">0246447360</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-dark-purple"></i></small><br /></div>
+                                <div onClick={copyToClipBoard3}><span className="fs-2" id="trfAcct3">0246447360</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-dark-purple"></i></small><br /></div>
 
                                 <label className="small">Account Name</label><br />
                                 <span className="fs-2">Junaid Bashir Mijinyawa</span>
