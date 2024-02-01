@@ -56,7 +56,6 @@ const PaymentDetails = () => {
     };
     useEffect(() => {
         fetchNairaRate();
-        // Fetch price every 5 seconds
         const interval = setInterval(() => {
             fetchNairaRate();
         }, 30000); //60k ms = 1m, 30k = 30s
@@ -110,8 +109,8 @@ const PaymentDetails = () => {
     // Calculate the result of formattedTotalN divided by the input value
     //const resultc = formattedTotalC !== null && inputValuec !== "" ? (formattedTotalC.replace(/,/g, "") / nairaValue).toLocaleString() : "-";
     const resultnr = (s_totalC / nairaValue).toFixed(5);
-    var resultn = parseFloat(resultnr);
-    resultn = resultn.toLocaleString();
+    var s_resultc = parseFloat(resultnr);
+    s_resultc = s_resultc.toLocaleString();
     
     
     // Event handler for input value change
@@ -136,17 +135,17 @@ const PaymentDetails = () => {
     };
 
     const handleProceedClick = () => {
-        navigate(`/naira-details/`, { state: { result } });
+        navigate(`/naira-details/`, { state: { inputValue, result, crypto } });
     };
     const handleProceedClickc = () => {
-        navigate(`/naira-details/`, { state: { inputValuec } });
+        navigate(`/naira-details/`, { state: { inputValuec, resultc, crypto } });
     };
 
     const s_handleProceedClick = () => {
-        navigate(`/crypto-details/`, { state: { s_result } });
+        navigate(`/crypto-details/`, { state: { s_inputValue, s_result, crypto } });
     };
     const s_handleProceedClickc = () => {
-        navigate(`/crypto-details/`, { state: { s_inputValuec } });
+        navigate(`/crypto-details/`, { state: { s_inputValuec, s_resultc, crypto } });
     };
     
 
@@ -328,7 +327,7 @@ const PaymentDetails = () => {
                                             value={s_inputValuec}
                                             onChange={s_handleInputChangec} step="any"></input>
                                         <div class="py-3 d-block">
-                                            <small >Amount to pay(inclusive of charges): {crypto} {resultn}</small>
+                                            <small >Amount to pay(inclusive of charges): {crypto} {s_resultc}</small>
                                             {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
                                             <div class="d-grid gap-2">
                                                 <button className="btn btn-outline-dark mt-3 d-inline-block" onClick={s_handleProceedClickc}>Proceed</button>

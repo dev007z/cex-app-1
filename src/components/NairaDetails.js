@@ -10,14 +10,25 @@ const NairaDetails = () => {
     var { result } = location.state;
     console.log(Number.parseInt(result))
     var { inputValuec } = location.state;
+    var { inputValue } = location.state;
+    var { crypto } = location.state;
+    var { resultc } = location.state;
+
+    const orderNumber = generateOrderNumber();
+    const whatsappUrl = `https://wa.me/2347032311325?text=Order%20number:%20${orderNumber}%0aKindly%20send%20payment%20details,%20I%20am%20paying%20through...`;
+
 
     const handleBackClick = () => {
         navigate(-1);
     };
 
     const handlePaymentCompleted = () => {
-        const orderNumber = generateOrderNumber();
-        navigate(`/order/${orderNumber}`);
+        {result &&
+            navigate(`/order/${orderNumber}`, { state: { result, inputValue, crypto } });
+        }
+        {inputValuec &&
+            navigate(`/order/${orderNumber}`, { state: { crypto, resultc, inputValuec } });
+        }
     };
 
     const copyToClipBoard = () => {
@@ -38,22 +49,7 @@ const NairaDetails = () => {
     }
     const copyToClipBoard0 = () => {
         // Get the text field
-        var result = document.getElementById("trfAmt1").innerText;
-        // Create a temporary text area element
-        const tempTextArea = document.createElement('textarea');
-        tempTextArea.value = result; // Replace with the value you want to copy
-        document.body.appendChild(tempTextArea);
-
-        // Select the text in the temporary text area
-        tempTextArea.select();
-        document.execCommand('copy');
-
-        // Remove the temporary text area
-        document.body.removeChild(tempTextArea);
-    }
-    const copyToClipBoard1 = () => {
-        // Get the text field
-        var result = document.getElementById("trfAcct").innerText;
+        var result = document.getElementById("trfAmt0").innerText;
         // Create a temporary text area element
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = result; // Replace with the value you want to copy
@@ -68,7 +64,7 @@ const NairaDetails = () => {
     }
     const copyToClipBoard2 = () => {
         // Get the text field
-        var result = document.getElementById("trfAcct2").innerText;
+        var result = document.getElementById("trfAmt2").innerText;
         // Create a temporary text area element
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = result; // Replace with the value you want to copy
@@ -81,9 +77,9 @@ const NairaDetails = () => {
         // Remove the temporary text area
         document.body.removeChild(tempTextArea);
     }
-    const copyToClipBoard3 = () => {
+    const copyToClipBoard1 = () => {
         // Get the text field
-        var result = document.getElementById("trfAcct3").innerText;
+        var result = document.getElementById("trfAmt1").innerText;
         // Create a temporary text area element
         const tempTextArea = document.createElement('textarea');
         tempTextArea.value = result; // Replace with the value you want to copy
@@ -117,78 +113,43 @@ const NairaDetails = () => {
                 </div>
                 <div className="px-5 py-4 text-center">
                     {result && 
-                        <div className="two-h" onClick={copyToClipBoard}>
-                            <h1 className="two-h">₦</h1> 
-                            <h1  id="trfAmt" className="two-h1">
-                                {result}
-                            </h1>
-                            <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                        <div>
+                            <div className="two-h" onClick={copyToClipBoard}>
+                                <h1 className="two-h">~₦</h1> 
+                                <h1  id="trfAmt" className="two-h1">
+                                    {result}
+                                </h1>
+                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            </div>
+                            <div className="two-h" onClick={copyToClipBoard0}>
+                                
+                                <h1  id="trfAmt0" className="two-h">
+                                    {inputValue} 
+                                </h1><h1 className="two-h1"> { crypto}</h1> 
+                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            </div>
                         </div>}
                     {inputValuec && 
-                        <div className="two-h" onClick={copyToClipBoard0}>
-                        <h1 className="two-h display-2">₦</h1>
-                            <h1 id="trfAmt1" className="two-h1 display-2">
-                                {inputValuec}
-                            </h1>
-                            <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                        <div>
+                            <div className="two-h" onClick={copyToClipBoard1}>
+                                <h1 className="two-h display-2">~₦</h1>
+                                <h1 id="trfAmt1" className="two-h1 display-2">
+                                    {inputValuec}
+                                </h1>
+                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            </div>
+                            <div className="two-h" onClick={copyToClipBoard2}>
+                                <h1 id="trfAmt2" className="two-h display-4">
+                                    {resultc}
+                                </h1>
+                                <h1 className="two-h1 display-4">{crypto}</h1>
+                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            </div>
                         </div>}
                     
                 </div>
-                <div className="px-5">
-                    <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active text-purple" id="kuda-tab" data-bs-toggle="tab" data-bs-target="#kuda-tab-pane" type="button" role="tab" aria-controls="kuda-tab-pane" aria-selected="true">Kuda Bank</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-orange" id="access-tab" data-bs-toggle="tab" data-bs-target="#access-tab-pane" type="button" role="tab" aria-controls="access-tab-pane" aria-selected="false">Access Bank</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link text-dark-purple" id="wema-tab" data-bs-toggle="tab" data-bs-target="#wema-tab-pane" type="button" role="tab" aria-controls="wema-tab-pane" aria-selected="false">Wema Bank</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        {/* KUDA BANK */}
-                        <div class="tab-pane fade show active" id="kuda-tab-pane" role="tabpanel" aria-labelledby="kuda-tab" tabIndex="0">
-                            <div class="py-4">
-                                <label className="small">Account Number</label><br/>
-                                <div onClick={copyToClipBoard1}><span className="fs-2" id="trfAcct">1100936736</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-purple"></i></small><br /></div>
-                                
-                                <label className="small">Account Name</label><br/>
-                                <span className="fs-2">Junaid Bashir Mijinyawa</span>
-                                <div className="d-grid">
-                                    <button className="btn btn-outline-purple mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
-                                </div>
-                            </div>
-                        </div>
-                        {/* ACCESS BANK */}
-                        <div class="tab-pane fade" id="access-tab-pane" role="tabpanel" aria-labelledby="access-tab" tabindex="0">
-                            <div class="py-4">
-                                <label className="small">Account Number</label><br />
-                                <div onClick={copyToClipBoard2}><span className="fs-2" id="trfAcct2">1513622264</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-orange"></i></small><br /></div>
-
-                                <label className="small">Account Name</label><br />
-                                <span className="fs-2">Junaid Bashir Mijinyawa</span>
-
-                                <div className="d-grid">
-                                    <button className="btn btn-outline-orange mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
-                                </div>
-                            </div>
-                        </div>
-                        {/* WEMA BANK */}
-                        <div class="tab-pane fade" id="wema-tab-pane" role="tabpanel" aria-labelledby="wema-tab" tabindex="0">
-                            <div class="py-4">
-                                <label className="small">Account Number</label><br />
-                                <div onClick={copyToClipBoard3}><span className="fs-2" id="trfAcct3">0246447360</span><small className="two-h2 fs-4"> <i className="fa fa-clone text-dark-purple"></i></small><br /></div>
-
-                                <label className="small">Account Name</label><br />
-                                <span className="fs-2">Junaid Bashir Mijinyawa</span>
-
-                                <div className="d-grid">
-                                    <button className="btn btn-outline-dark-purple mt-3 btn-block" onClick={handlePaymentCompleted}>Payment Completed</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="px-5 d-grid gap-2">
+                    <a class="btn btn-outline-success btn-lg" href={whatsappUrl} role="button" onClick={handlePaymentCompleted} target="blank"><i class="fa-brands fa-whatsapp"></i> Complete Order </a>
                 </div>
 
                 {/* Add other payment details here */}

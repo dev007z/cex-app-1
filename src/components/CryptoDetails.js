@@ -6,8 +6,8 @@ const CryptoDetails = () => {
     const navigate = useNavigate();
 
     var { s_result } = location.state;
-    console.log(s_result)
     var { s_inputValuec } = location.state;
+    var { crypto } = location.state;
 
     const handleBackClick = () => {
         // Navigate back to the previous page (CryptoScreen)
@@ -36,15 +36,14 @@ const CryptoDetails = () => {
                 </div>
                 
                 {/* Add other payment details here */}
+                <div>
+                    <h6>Sell BNB</h6>
+                    <span>Amount to receive: {s_result && {s_result} } </span>
+                </div>
                 <div className="px-5 py-4 text-center text-black">
-                    {s_result &&
-                        <div className="two-h" >
-                            <h1 className="two-h">₦</h1>
-                            <h1 id="trfAmt" className="two-h1">
-                                {s_result}
-                            </h1>
-                            <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
-                        </div>}
+                    
+                    
+                    
                     {s_inputValuec &&
                         <div className="two-h">
                             <h1 className="two-h display-2">₦</h1>

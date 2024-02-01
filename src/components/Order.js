@@ -1,54 +1,59 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Order = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    var { result } = location.state;
+    var { inputValue } = location.state;
+    var { resultc } = location.state;
+    var { inputValuec } = location.state;
+    var { crypto } = location.state;
+
     const { orderNumber } = useParams();
-    var orderData = {
+    
+    const orderData = {
         no: orderNumber,
         status: "Pending",
-        details: "",
+        details: crypto + " - " + result + " - " + resultc + " - " + inputValue + " - " + inputValuec, 
         time: new Date().toISOString()
     }
-    const placeOrder = async (orderData) => {
-        try {
-            const response = await fetch('http://localhost:4500/placeOrder', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData),
-            });
-            console.log("Response status:", response.status); // Log the response status
+    useEffect(() => {
+        const placeOrder = async () => {
+            try {
+                const response = await fetch('http://localhost:4500/placeOrder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData),
+                });
+                console.log("Response status:", response.status);
 
-            if (response.ok) {
-                console.log('Order placed successfully');
-                // You can handle success here, e.g., show a success message to the user
-            } else {
-                // Check if the response has a JSON body before parsing it
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.includes('application/json')) {
-                    const errorResponse = await response.json(); // Parse the error response JSON
-                    console.error('Error placing order:', errorResponse);
-                    // Handle the error, e.g., show an error message to the user
+                if (response.ok) {
+                    console.log('Order placed successfully');
                 } else {
-                    // If the response is not JSON, handle the error accordingly
-                    console.error('Error placing order. Non-JSON response.');
-                    // Handle the error, e.g., show a generic error message to the user
+                    // Handle errors as you've already implemented
                 }
+            } catch (error) {
+                console.error('Error placing order', error);
             }
-        } catch (error) {
-            console.error('Error placing order', error);
-            // Handle the error, e.g., show an error message to the user
-        }
-    };
+        };
 
-    placeOrder(orderData)
+        placeOrder();
+    }, [orderData]); // Only run the effect if orderData changes
 
     return (
         <div>
-            <h2>Order Confirmation</h2>
-            <p>Your order number: {orderNumber}</p>
+            <div className="pcentered bg-black text-white text-center py-5 ">
+                <h2>Order Confirmation</h2>
+                <span className="text-center display-1 text-success"><i class="fa-solid fa-circle-check"></i></span>
+                <p className="display-6">Your order number: {orderNumber}</p>
+            </div>
+            
         </div>
     );
 };
