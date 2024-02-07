@@ -50,8 +50,9 @@ const Order = () => {
         <div>
             <div className="pcentered bg-black text-white text-center py-5 ">
                 <h2>Order Confirmation</h2>
-                <span className="text-center display-1 text-success"><i class="fa-solid fa-circle-check"></i></span>
+                <span className="text-center display-1 text-success"><i className="fa-solid fa-circle-check"></i></span>
                 <p className="display-6">Your order number: {orderNumber}</p>
+                <a className="btn btn-outline-transparent btn-transparent text-white text-bottom" role="button" href="/">Home</a>
             </div>
             
         </div>

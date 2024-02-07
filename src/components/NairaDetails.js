@@ -6,13 +6,13 @@ import { generateOrderNumber } from "./utils";
 const NairaDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
-
+    var { formattedNairaValue } = location.state;
     var { result } = location.state;
-    console.log(Number.parseInt(result))
     var { inputValuec } = location.state;
     var { inputValue } = location.state;
     var { crypto } = location.state;
     var { resultc } = location.state;
+    
 
     const orderNumber = generateOrderNumber();
     const whatsappUrl = `https://wa.me/2347032311325?text=Order%20number:%20${orderNumber}%0aKindly%20send%20payment%20details,%20I%20am%20paying%20through...`;
@@ -105,51 +105,86 @@ const NairaDetails = () => {
 
                     </div>
                     <div className="col-6 p-3 buy-sell text-center">
-                        <h4>Payment Details</h4>
+                        <h4>Order Details</h4>
                     </div>
                     <div className="col-3" >
 
                     </div>
                 </div>
-                <div className="px-5 py-4 text-center">
+                <div className="px-5 py-4">
                     {result && 
-                        <div>
-                            <div className="two-h" onClick={copyToClipBoard}>
-                                <h1 className="two-h">~₦</h1> 
-                                <h1  id="trfAmt" className="two-h1">
-                                    {result}
-                                </h1>
-                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                        <div className="mt-5">
+                            <div className="d-flex mt-5" >
+                                <div className="fs-4">Amount: </div> 
+                                <div className="fs-4 ms-auto">
+                                    <span>₦</span>
+                                    <span id="trfAmt" >{result}</span>
+                                    <span className=" px-1 fs-5" onClick={copyToClipBoard}> <i className="fa fa-clone"> </i></span>
+                                </div>
                             </div>
-                            <div className="two-h" onClick={copyToClipBoard0}>
-                                
-                                <h1  id="trfAmt0" className="two-h">
-                                    {inputValue} 
-                                </h1><h1 className="two-h1"> { crypto}</h1> 
-                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            <div className="d-flex" >
+                                <div className="fs-4">Price: </div>
+                                <div className="fs-4 ms-auto">
+                                    <span>₦</span>
+                                    <span id="trfAmt0" >{formattedNairaValue}</span>
+                                    <span className="px-1 fs-5" onClick={copyToClipBoard0}> <i className="fa fa-clone"> </i></span>
+                                </div>
                             </div>
-                        </div>}
+                            <div className="d-flex">
+                                <div className="fs-4">Quantity: </div>
+                                <div className="fs-4 ms-auto">
+                                    <span id="trfAmt1">{inputValue}</span><span>{crypto}</span>
+                                    <span className="two-h2 px-1 fs-5" onClick={copyToClipBoard1}> <i className="fa fa-clone"> </i></span>
+                                </div>
+                            </div>
+                            <div className="d-flex">
+                                <div className="fs-4">Order No: </div>
+                                <div className="fs-4 ms-auto">
+                                    <span id="trfAmt2">{orderNumber}</span>
+                                    <span className="two-h2 px-1 fs-5" onClick={copyToClipBoard2}> <i className="fa fa-clone"> </i></span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    }
                     {inputValuec && 
-                        <div>
-                            <div className="two-h" onClick={copyToClipBoard1}>
-                                <h1 className="two-h display-2">~₦</h1>
-                                <h1 id="trfAmt1" className="two-h1 display-2">
-                                    {inputValuec}
-                                </h1>
-                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                        <div className="mt-5">
+                            <div className="d-flex mt-5" >
+                                <div className="fs-4">Amount: </div> 
+                                <div className="fs-4 ms-auto">
+                                    <span>₦</span>
+                                <span id="trfAmt" >{inputValuec}</span>
+                                    <span className=" px-1 fs-5" onClick={copyToClipBoard}> <i className="fa fa-clone"> </i></span>
+                                </div>
                             </div>
-                            <div className="two-h" onClick={copyToClipBoard2}>
-                                <h1 id="trfAmt2" className="two-h display-4">
-                                    {resultc}
-                                </h1>
-                                <h1 className="two-h1 display-4">{crypto}</h1>
-                                <span className="two-h2 px-1 fs-3"> <i className="fa fa-clone"> </i></span>
+                            <div className="d-flex" >
+                                <div className="fs-4">Price: </div>
+                                <div className="fs-4 ms-auto">
+                                    <span>₦</span>
+                                    <span >{formattedNairaValue}</span>
+                                </div>
                             </div>
-                        </div>}
+                            <div className="d-flex">
+                                <div className="fs-4">Quantity: </div>
+                                <div className="fs-4 ms-auto">
+                                <span id="trfAmt1">{resultc}</span><span>{crypto}</span>
+                                    <span className="two-h2 px-1 fs-5" onClick={copyToClipBoard1}> <i className="fa fa-clone"> </i></span>
+                                </div>
+                            </div>
+                            <div className="d-flex">
+                                <div className="fs-4">Order No: </div>
+                                <div className="fs-4 ms-auto">
+                                    <span id="trfAmt2">{orderNumber}</span>
+                                    <span className="two-h2 px-1 fs-5" onClick={copyToClipBoard2}> <i className="fa fa-clone"> </i></span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        }
                     
                 </div>
                 <div className="px-5 d-grid gap-2">
-                    <a class="btn btn-outline-success btn-lg" href={whatsappUrl} role="button" onClick={handlePaymentCompleted} target="blank"><i class="fa-brands fa-whatsapp"></i> Complete Order </a>
+                    <a className="btn btn-outline-success btn-lg" href={whatsappUrl} role="button" onClick={handlePaymentCompleted} target="blank"><i className="fa-brands fa-whatsapp"></i> Complete Order </a>
                 </div>
 
                 {/* Add other payment details here */}

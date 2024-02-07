@@ -37,10 +37,13 @@ const CryptoScreen = () => {
                             </div>
                         ))}
                         <button className="btn btn-light btn-block my-5 others-btn">
-                            <a href="https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20buy%20crypto">Others</a>
+                            <a href="https://api.whatsapp.com/send?phone=2347032311325&text=I%20want%20to%20buy%20crypto">Others</a>
                         </button>
                     </div>
                 </div>
+                <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                    <i className="fa fa-whatsapp my-float"></i>
+                </a>
             </div>
 
         );
@@ -60,10 +63,13 @@ const CryptoScreen = () => {
                                 </div>
                             ))}
                             <button className="btn btn-outline-dark btn-block my-5 others-btn">
-                                <a href="https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20sell%20crypto">Others</a>
+                                <a href="https://api.whatsapp.com/send?phone=2347032311325&text=I%20want%20to%20sell%20crypto">Others</a>
                             </button>
                     </div>
                 </div>
+                <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                    <i className="fa fa-brands fa-whatsapp my-float"></i>
+                </a>
             </div>
         );
     } 

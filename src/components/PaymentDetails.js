@@ -10,7 +10,7 @@ const PaymentDetails = () => {
     const [cryptoPrice, setCryptoPrice] = useState(null);
     const [nairaRatez, setNairaRatez] = useState(null);
 
-    const nairaRate = nairaRatez
+    const nairaRate = nairaRatez + 18
     const serviceCharge = env('serviceCharge')
 
     console.log("Naira Rate: "+nairaRate)
@@ -135,10 +135,10 @@ const PaymentDetails = () => {
     };
 
     const handleProceedClick = () => {
-        navigate(`/naira-details/`, { state: { inputValue, result, crypto } });
+        navigate(`/naira-details/`, { state: { inputValue, result, crypto, formattedNairaValue } });
     };
     const handleProceedClickc = () => {
-        navigate(`/naira-details/`, { state: { inputValuec, resultc, crypto } });
+        navigate(`/naira-details/`, { state: { inputValuec, resultc, crypto, formattedNairaValue } });
     };
 
     const s_handleProceedClick = () => {
@@ -178,25 +178,25 @@ const PaymentDetails = () => {
                             <p className="text-center">{crypto}: ${formattedCryptoPrice}</p>
                         </div>
                         <div className="p-5 text-white">
-                            <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active text-white" id="crypto-tab" data-bs-toggle="tab" data-bs-target="#crypto-tab-pane" type="button" role="tab" aria-controls="crypto-tab-pane" aria-selected="true">{crypto}</button>
+                            <ul className="nav nav-underline nav-fill" id="myTab" role="tablist">
+                                <li className="nav-item" role="presentation">
+                                    <button className="nav-link active text-white" id="crypto-tab" data-bs-toggle="tab" data-bs-target="#crypto-tab-pane" type="button" role="tab" aria-controls="crypto-tab-pane" aria-selected="true">{crypto}</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link text-white" id="naira-tab" data-bs-toggle="tab" data-bs-target="#naira-tab-pane" type="button" role="tab" aria-controls="naira-tab-pane" aria-selected="false">Naira</button>
+                                <li className="nav-item" role="presentation">
+                                    <button className="nav-link text-white" id="naira-tab" data-bs-toggle="tab" data-bs-target="#naira-tab-pane" type="button" role="tab" aria-controls="naira-tab-pane" aria-selected="false">Naira</button>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="crypto-tab-pane" role="tabpanel" aria-labelledby="crypto-tab" tabIndex="0">
-                                    <div class="py-5">
-                                        <input type="number" class="form-control px-3" aria-label={`Amount in ${crypto}`}
+                            <div className="tab-content" id="myTabContent">
+                                <div className="tab-pane fade show active" id="crypto-tab-pane" role="tabpanel" aria-labelledby="crypto-tab" tabIndex="0">
+                                    <div className="py-5">
+                                        <input type="number" className="form-control px-3" aria-label={`Amount in ${crypto}`}
                                             placeholder={`Amount in ${crypto}`} 
                                             value={inputValue}
                                             onChange={handleInputChange} step="any"></input>
-                                        <div class="py-3 d-block">
+                                        <div className="py-3 d-block">
                                             <small >Amount to pay(inclusive of charges): ₦{result}</small>
-                                            {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
-                                            <div class="d-grid gap-2">
+                                            {/* <small id="5m-warn" className="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
+                                            <div className="d-grid gap-2">
                                                 <button className="btn btn-outline-light mt-3 d-inline-block" onClick={handleProceedClick}>Proceed</button>
                                             </div>
                                         </div>
@@ -205,29 +205,29 @@ const PaymentDetails = () => {
                                             <ul>
                                                 <li><small>Do not use crypto related words in transfer description</small></li>
                                                 <li><small>For transfers over 5 Million Naira, contact us on 
-                                                    <a href={`https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20buy%20${crypto}%20of%20over%205%20million`}
+                                                    <a href={`https://api.whatsapp.com/send?phone=2347032311325&text=I%20want%20to%20buy%20${crypto}%20of%20over%205%20million`}
                                                         className="link-success text-decoration-none"> Whatsapp</a>
                                                     </small>
                                                 </li>
                                                 <li><small>Transaction receipts should be saved for reference</small></li>
                                             </ul>
                                         </div>
-                                        <a href="https://api.whatsapp.com/send?phone=2349049179660" class="float" target="_blank" rel="noreferrer">
-                                            <i class="fa fa-whatsapp my-float"></i>
+                                        <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                                            <i className="fa fa-brands fa-whatsapp my-float"></i>
                                         </a>
                                     </div>
                                     
                                 </div>
-                                <div class="tab-pane fade " id="naira-tab-pane" role="tabpanel" aria-labelledby="naira-tab" tabindex="0">
-                                    <div class="py-5">
-                                        <input type="number" class="form-control px-3" aria-label={`Amount in Naira`}
+                                <div className="tab-pane fade " id="naira-tab-pane" role="tabpanel" aria-labelledby="naira-tab" tabindex="0">
+                                    <div className="py-5">
+                                        <input type="number" className="form-control px-3" aria-label={`Amount in Naira`}
                                             placeholder={`Amount in Naira`}
                                             value={inputValuec}
                                             onChange={handleInputChangec} step="any"></input>
-                                        <div class="py-3 d-block">
+                                        <div className="py-3 d-block">
                                             <small >Amount to pay(inclusive of charges): {crypto} {resultc}</small>
-                                            {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
-                                            <div class="d-grid gap-2">
+                                            {/* <small id="5m-warn" className="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
+                                            <div className="d-grid gap-2">
                                             <button className="btn btn-outline-light mt-3 d-inline-block" onClick={handleProceedClickc}>Proceed</button>
                                             </div>
                                         </div>
@@ -236,15 +236,15 @@ const PaymentDetails = () => {
                                             <ul>
                                                 <li><small>Do not use crypto related words in transfer description</small></li>
                                                 <li><small>For transfers over 5 Million Naira, contact us on  
-                                                        <a href={`https://api.whatsapp.com/send?phone=2349049179660&text=I%20want%20to%20buy%20${crypto}%20of%20over%205%20million`}
+                                                        <a href={`https://api.whatsapp.com/send?phone=2347032311325&text=I%20want%20to%20buy%20${crypto}%20of%20over%205%20million`}
                                                     className="link-success text-decoration-none"> Whatsapp</a>
                                                     </small>
                                                 </li>
                                                 <li><small>Transaction receipts should be saved for reference</small></li>
                                             </ul>
                                         </div>
-                                        <a href="https://api.whatsapp.com/send?phone=2349049179660" class="float" target="_blank" rel="noreferrer">
-                                            <i class="fa fa-whatsapp my-float"></i>
+                                        <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                                            <i className="fa fa-whatsapp my-float"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -253,7 +253,20 @@ const PaymentDetails = () => {
                         
                     </div>
                 ) : (
-                    <p className="text-center">Loading price...</p>
+                    <div className="text-center">
+                        <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
                 )}
                 {/* Add other payment details here */}
             </div>
@@ -284,65 +297,65 @@ const PaymentDetails = () => {
                             <p className="text-center">{crypto}: ${formattedCryptoPrice}</p>
                         </div>
                         <div className="p-5 ">
-                            <ul class="nav nav-underline nav-fill" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active text-black" id="crypto-tab" data-bs-toggle="tab" data-bs-target="#crypto-tab-pane" type="button" role="tab" aria-controls="crypto-tab-pane" aria-selected="true">{crypto}</button>
+                            <ul className="nav nav-underline nav-fill" id="myTab" role="tablist">
+                                <li className="nav-item" role="presentation">
+                                    <button className="nav-link active text-black" id="crypto-tab" data-bs-toggle="tab" data-bs-target="#crypto-tab-pane" type="button" role="tab" aria-controls="crypto-tab-pane" aria-selected="true">{crypto}</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link text-black" id="naira-tab" data-bs-toggle="tab" data-bs-target="#naira-tab-pane" type="button" role="tab" aria-controls="naira-tab-pane" aria-selected="false">Naira</button>
+                                <li className="nav-item" role="presentation">
+                                    <button className="nav-link text-black" id="naira-tab" data-bs-toggle="tab" data-bs-target="#naira-tab-pane" type="button" role="tab" aria-controls="naira-tab-pane" aria-selected="false">Naira</button>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="crypto-tab-pane" role="tabpanel" aria-labelledby="crypto-tab" tabIndex="0">
-                                    <div class="py-5">
-                                        <input type="number" class="form-control px-3 border-dark" aria-label={`Amount in ${crypto}`}
+                            <div className="tab-content" id="myTabContent">
+                                <div className="tab-pane fade show active" id="crypto-tab-pane" role="tabpanel" aria-labelledby="crypto-tab" tabIndex="0">
+                                    <div className="py-5">
+                                        <input required type="number" className="form-control px-3 border-dark" aria-label={`Amount in ${crypto}`}
                                             placeholder={`Amount in ${crypto}`}
                                             value={s_inputValue}
-                                            onChange={s_handleInputChange} step="any"></input>
-                                        <div class="py-3 d-block">
+                                            onChange={s_handleInputChange} step="any" ></input>
+                                        <div className="py-3 d-block">
                                             <small >Amount to pay(inclusive of charges): ₦{s_result}</small>
-                                            {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
-                                            <div class="d-grid gap-2">
+                                            {/* <small id="5m-warn" className="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
+                                            <div className="d-grid gap-2">
                                                 <button className="btn btn-outline-dark mt-3 d-inline-block" onClick={s_handleProceedClick}>Proceed</button>
                                             </div>
                                         </div>
                                         <div className="p-3 border border-warning bg-warning bg-opacity-25 rounded" role="alert">
                                             <h5 className="alert-heading">Rules</h5>
                                             <ul>
-                                                <li><small>Reach out to us on <a href={`https://api.whatsapp.com/send?phone=2349049179660`}
+                                                <li><small>Reach out to us on <a href={`https://api.whatsapp.com/send?phone=2347032311325`}
                                                     className="link-success text-decoration-none"> Whatsapp</a> if you do not see your preferred network listed</small></li>
                                                 <li><small>Transaction receipts should be saved for reference</small></li>
                                             </ul>
                                         </div>
-                                        <a href="https://api.whatsapp.com/send?phone=2349049179660" class="float" target="_blank" rel="noreferrer">
-                                            <i class="fa fa-whatsapp my-float"></i>
+                                        <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                                            <i className="fa fa-whatsapp my-float"></i>
                                         </a>
                                     </div>
 
                                 </div>
-                                <div class="tab-pane fade " id="naira-tab-pane" role="tabpanel" aria-labelledby="naira-tab" tabindex="0">
-                                    <div class="py-5">
-                                        <input type="number" class="form-control px-3 border-dark" aria-label={`Amount in Naira`}
+                                <div className="tab-pane fade " id="naira-tab-pane" role="tabpanel" aria-labelledby="naira-tab" tabindex="0">
+                                    <div className="py-5">
+                                        <input type="number" className="form-control px-3 border-dark" aria-label={`Amount in Naira`}
                                             placeholder={`Amount in Naira`}
                                             value={s_inputValuec}
-                                            onChange={s_handleInputChangec} step="any"></input>
-                                        <div class="py-3 d-block">
+                                            onChange={s_handleInputChangec} step="any" required></input>
+                                        <div className="py-3 d-block">
                                             <small >Amount to pay(inclusive of charges): {crypto} {s_resultc}</small>
-                                            {/* <small id="5m-warn" class="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
-                                            <div class="d-grid gap-2">
+                                            {/* <small id="5m-warn" className="d-block mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2"></small> */}
+                                            <div className="d-grid gap-2">
                                                 <button className="btn btn-outline-dark mt-3 d-inline-block" onClick={s_handleProceedClickc}>Proceed</button>
                                             </div>
                                         </div>
                                         <div className="p-3 border border-warning bg-warning bg-opacity-25 rounded" role="alert">
                                             <h5 className="alert-heading">Rules</h5>
                                             <ul>
-                                                <li><small>Reach out to us on <a href={`https://api.whatsapp.com/send?phone=2349049179660`}
+                                                <li><small>Reach out to us on <a href={`https://api.whatsapp.com/send?phone=2347032311325`}
                                                     className="link-success text-decoration-none"> Whatsapp</a> if you do not see your preferred network listed</small></li>
                                                 <li><small>Transaction receipts should be saved for reference</small></li>
                                             </ul>
                                         </div>
-                                        <a href="https://api.whatsapp.com/send?phone=2349049179660" class="float" target="_blank" rel="noreferrer">
-                                            <i class="fa fa-whatsapp my-float"></i>
+                                        <a href="https://api.whatsapp.com/send?phone=2347032311325" className="float" target="_blank" rel="noreferrer">
+                                            <i className="fa fa-whatsapp my-float"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -351,7 +364,20 @@ const PaymentDetails = () => {
 
                     </div>
                 ) : (
-                    <p className="text-center">Loading price...</p>
+                        <div className="text-center">
+                            <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                            <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                            <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                            <div className="spinner-grow spinner-grow-sm m-1" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
                 )}
                 {/* Add other payment details here */}
             </div>
